@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>网页换肤</title>
+</head>
+<style>
+	*{ margin: 0; padding: 0;}
+	li{ list-style: none;}
+	a:link{ color: #fff; text-decoration: none;}
+	body{ background-color: #a3c5a8;}
+	#main{ width: 500px; margin: 10px auto;}
+	.skin li{ background-color: green; margin: 0 10px 10px 0; padding: 3px; float: left;}
+	.skin li:hover{ cursor: pointer;}
+	#red{ background-color: red; border: 4px solid red;}
+	#green{ background-color: white; border: 4px solid green;}
+	#black{ background-color: black; border: 4px solid black;}
+	.clearfix:after{ content: ""; display: block; clear: both;}
+	#navbar { background-color: green;}
+	#navbar li{ border: 1px solid #fff; border-right-width: 0.5px; width: 82px; line-height: 25px; text-align: center; font-size: 12px; float:left;}
+	#navbar .last{ border-right-width: 1px;}
+</style>
+<script>
+	/*
+	一、 清除浮动的五种方法：
+	**参考：http://www.cnblogs.com/ForEvErNoME/p/3383539.html
+	1、使用带clear属性的空元素
+	2、使用CSS的overflow属性
+	3、给浮动元素的容器添加浮动，危害很大，不推荐使用
+	4、使用邻接元素处理，即给浮动元素后面的元素使用clear
+	5、使用clearfix（即使用：after伪元素，不是伪类，针对ie可能需要IEhack,即触发hasLayout）
+
+	二、问题
+	1、注意区分getElementById和getElementsByTagName返回的结果的区别
+	2、将js对象放入数组中，一定得用push()吗？
+	*/
+	window.onload=function(){
+		var my={
+			redBtn: document.getElementById('red'),
+			greenBtn: document.getElementById('green'),
+			blackBtn: document.getElementById('black'),
+			bodyBackground: document.getElementsByTagName('body')[0],
+			navBackground: document.getElementById('navbar'),
+			btn: [],
+			skin: ['#fdd','#a3c5a8','#ccc'],
+			navColor: ['red','green','black'],
+		}
+		//将换肤button对象放入btn数组
+		my.btn.push(my.redBtn);
+		my.btn.push(my.greenBtn);
+		my.btn.push(my.blackBtn);
+		var changeColor=function(i){
+			//换肤
+			return function(){
+				for(var b=0; b<3; b+=1){
+					my.btn[b].style.backgroundColor=my.navColor[b];//统一将换肤button中的白点去掉
+				}
+				my.btn[i].style.backgroundColor='#fff';
+				my.bodyBackground.style.backgroundColor=my.skin[i];
+				// console.log(my.bodyBackground);
+				my.navBackground.style.backgroundColor=my.navColor[i];
+			};
+		};
+		for(var i=0; i< my.btn.length;i+=1){
+			my.btn[i].onclick=changeColor(i);//使用闭包绑定
+		};
+	}
+</script>
+<body>
+	<div id="main">
+		<div class="skin clearfix">
+			<ul>
+				<li id="red"></li>
+				<li id="green"></li>
+				<li id="black"></li>
+			</ul>
+		</div>
+		<div id="navbar" class="clearfix">
+			<ul>
+				<li class="nav"><a href="javascript: void(0)">新闻</a></li>
+				<li class="nav"><a href="javascript: void(0)">娱乐</a></li>
+				<li class="nav"><a href="javascript: void(0)">体育</a></li>
+				<li class="nav"><a href="javascript: void(0)">电影</a></li>
+				<li class="nav"><a href="javascript: void(0)">音乐</a></li>
+				<li class="nav last"><a href="javascript: void(0)">旅游</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
