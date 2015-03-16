@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>函数接收参数并弹出</title>
+	<style>
+		*{ margin: 0; padding: 0;}
+		.main{ width: 400px; margin: 12px auto;}
+		.main input{ margin: 0 auto 12px; display: block;}
+		.main .text{ width: 167px; height: 22px; border: 1px solid #cdcdcd;}
+		.main .button{ width: 42px; height: 22px;}
+	</style>
+	<script>
+
+		// 根据元素类名查找，返回数组
+		var getElementsByClassName=function(classNames){
+			if (document.getElementsByClassName) {//检测浏览器是否支持getElementsByClassName()
+				return document.getElementsByClassName(classNames);
+			};
+			var tagNameElement=getElementsByTagName('*');
+			var result = [];
+			for(var i=0; i<tagNameElement.length; i+=1){
+				if(tagNameElement[i].className == classNames){
+					result.push(tagNameElement[i]);
+				}
+			}
+			return result;
+		}
+
+		window.onload=function(){
+			var textValue = getElementsByClassName('text'); 
+			var button = document.getElementsByClassName('button')[0];
+			button.onclick=function(){
+				for( var a=0; a<textValue.length; a+=1){
+					alert(textValue[a].value);
+				}	
+			}		
+		}
+	</script>
+</head>
+<body>
+	<div class="main">
+		<input class="text" type="text" value="北京市">
+		<input class="text" type="text" value="朝阳区">
+		<input class="button" type="button" value="传参">
+	</div>
+</body>
+</html>
