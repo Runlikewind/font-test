@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>鼠标移入/移出改变样式</title>
+	<style>
+		#main{ width: 400px; margin: 8px auto;}
+		#box{ width: 170px; height: 170px; margin: 0 auto; border: 10px solid #000; background-color: #000;}
+		#innerBox{ padding: 12px; width: 146px; height: 146px; font-size: 12px; color: #fff;}
+	</style>
+	<script>
+		window.onload=function(){
+			var box=document.getElementById('box');
+			var innerBox=document.getElementById('innerBox');
+			box.onmouseover=function(){
+				box.style.borderColor = '#f00';
+				box.style.cursor = 'crosshair';
+				innerBox.style.backgroundColor = '#f0f0f0';
+				innerBox.style.color = '#f00';
+			}
+			box.onmouseout=function(){
+				box.style.cssText = '';
+				innerBox.style.cssText = '';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<div id="box">
+			<div id="innerBox">鼠标移入改变样式，鼠标移出恢复。</div>
+		</div>
+	</div>
+</body>
+</html>

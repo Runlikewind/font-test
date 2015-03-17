@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>记住密码提示框</title>
+	<style>
+		*{ margin: 0; padding: 0;}
+		#main{ width: 200px; margin: 12px auto; font-size: 12px;}
+		#main input{ vertical-align: -3px;}
+		#info{ margin-top: 5px; padding: 5px; line-height: 18px; border: 1px solid #f90; background-color: #ffefa4; display: none;}
+	</style>
+	<script>
+		window.onload=function(){
+			var remeberPass=document.getElementsByTagName('label')[0];
+			var info=document.getElementById('info');
+			remeberPass.onmouseover=function(){
+				info.style.display = 'block';
+			}
+			remeberPass.onmouseout=function(){
+				info.style.display = 'none';
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<label for="rememerPassword"><input type="checkbox"> 两周内自动登陆</label>
+		<div id="info">为了您的信息安全，请不要在网吧或共用电脑上使用此功能！</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>用循环将三个DIV变成红色</title>
+	<style>
+		*{ margin: 0; padding: 0;}
+		#main{ width: 400px; margin: 12px auto; }
+		#main input{ margin: 0 auto; display: block;}
+		#outer{ margin: 0 27px; display: block;}
+		.box{ width: 100px; height: 100px; margin: 10px 5px; display: inline-block; background-color: #000; }
+	</style>
+	<script>
+
+		var getElementsByClassName=function(classNames){
+			if (document.getElementsByClassName) {//检测浏览器是否支持getElementsByClassName()
+				return document.getElementsByClassName(classNames);
+			};
+			var tagNameElement=getElementsByTagName('*');
+			var result = [];
+			for(var i=0; i<tagNameElement.length; i+=1){
+				if(tagNameElement[i].className == classNames){
+					result.push(tagNameElement[i]);
+				}
+			}
+			return result;
+		}
+
+		window.onload=function(){
+			var oBtn=document.getElementsByTagName('input')[0];
+			var box=getElementsByClassName('box');
+			oBtn.onclick=function(){
+				for(var i=0; i<box.length; i+=1){
+					box[i].style.backgroundColor = '#f00';
+				};
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<input type="button" value="点击将DIV变成红色">
+		<div id="outer">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+	</div>
+</body>
+</html>
