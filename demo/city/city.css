@@ -1,0 +1,10 @@
+*{ padding: 0; margin: 0;}
+#city{ width: 400px; margin: 24px auto; font-size: 15px;}
+li{ list-style: none;}
+.city-choose{ width: 300px; margin: 0 20px 0 75px; border: 1px solid #cdcdcd;}
+#city .city-nav{ width: 35px; line-height: 22px; text-align: center; margin: 5px 6px 0; border: 1px solid #cdcdcd; border-bottom: 0; font-size: 12px; color: #00f; cursor: pointer; float: left;}
+#city .current{ background: #eaeaea;}
+#city .clearfix:after{ clear: both; content: ''; display: block;}
+#city .city-catogory{ width: 280px; height: 100%; padding: 3px 0px 3px 20px; border-top: 1px solid #cdcdcd;}
+#city .city-name{ width: 50px; padding: 6px 0; text-align: center; font-size: 12px; color: #1d1d1d; display: inline-block;}
+#city .city-name{ text-decoration: none;}

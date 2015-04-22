@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" href="city.css" type="text/css">
+	<script src="jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="city.js" type="text/javascript"></script>
+	<title>基于jquery的城市选择插件</title>
+</head>
+<body>
+	<div id="city">
+		<label for="city">城市选择：<input id="city-input" type="text"></label>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var inputText = $("#city input");
+			// inputText表示input元素，inputDisabled表示是否支持输入：true不支持，false支持
+			$("#city").city({"inputText" : inputText, "inputDisabled" : true});
+		});
+	</script>
+</body>
+</html>
